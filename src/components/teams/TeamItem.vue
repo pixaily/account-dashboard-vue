@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="team__action" v-if="showButton">
-      <base-button :mode="'button'" :label="buttonLabel" :classes="'button button--round button--follow'" @buttonClicked="followClick" :disable="isFollowing"></base-button>
+      <base-button :mode="'button'" :label="buttonLabel" :classes="'button button--round button--follow'" @buttonClicked="followClick"></base-button>
     </div>
   </div>
 </template>
@@ -58,8 +58,8 @@ export default {
   },
   methods: {
     followClick() {
-      this.$store.dispatch('teams/updateTeam', { id: this.id, is_following: true });
-      this.$store.dispatch('user/addTeam', { id: this.id })
+      this.$store.dispatch('teams/updateTeam', { id: this.id, is_following: !this.isFollowing });
+      this.$store.dispatch('user/upadteMyTeams', { id: this.id })
     }
   }
 }
