@@ -4,5 +4,8 @@ export default {
     const teams = await response.json();
 
     context.commit('updateTeams', teams)
+  },
+  updateTeam(context, payload) {
+    context.commit('updateTeam', payload)
   }
 }

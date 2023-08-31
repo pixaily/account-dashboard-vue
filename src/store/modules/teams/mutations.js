@@ -5,5 +5,9 @@ export default {
     } else {
       state.teams = [...payload];
     }
+  },
+  updateTeam(state, payload) {
+    const team = state.teams.find(team => team.id === payload.id);
+    team.is_following = payload.is_following;
   }
 }
