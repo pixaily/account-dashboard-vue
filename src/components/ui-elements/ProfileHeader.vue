@@ -6,12 +6,13 @@
         <base-icon class="'icon--arrow-left'" v-html="iconLeftArrow"></base-icon>
       </base-button>
       <base-button :mode="'router'" :to="'/'" :label="'Account Dashboard'" :class="'logo'" :labelClasses="'logo__text notext'">
-        <figure>
+        <!-- <figure>
           <img src="../../assets/images/logo.png" alt="">
-        </figure>
+        </figure> -->
+        <span class="logo__small hidden-md" v-html="iconLogo"></span>
         <p>VueJS</p>
         <!-- <span class="logo__small hidden-md" v-html="logoSmall"></span> -->
-        <!-- <span class="logo__big hidden-sm" v-html="logo"></span> -->
+        <!-- <span class="logo__big hidden-sm" v-html="iconLogo"></span> -->
       </base-button>
     </div>
     <div class="header__center">
@@ -34,7 +35,7 @@
 </template>
 
 <script>
-import { svgLeftArrow, svgNotification } from './../../assets/icons/SvgStore.js';
+import { svgLogo, svgLeftArrow, svgNotification } from './../../assets/icons/SvgStore.js';
 
 export default {
   props: {
@@ -50,7 +51,8 @@ export default {
   data() {
     return {
       iconLeftArrow: svgLeftArrow,
-      iconNotification: svgNotification
+      iconNotification: svgNotification,
+      iconLogo: svgLogo
     }
   }
 }

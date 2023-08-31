@@ -1,3 +1,12 @@
+export const svgLogo = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <style>
+    .st0 { fill: #42B883; }
+    .st1 { fill: #35495E; }
+  </style>
+  <path class="st0" d="M78.8,10L64,35.4L49.2,10H0l64,110l64-110C128,10,78.8,10,78.8,10z"/>
+  <path class="st1" d="M78.8,10L64,35.4L49.2,10H25.6L64,76l38.4-66H78.8z"/>
+</svg>`;
+
 export const svgLeftArrow = `<svg xmlns="http://www.w3.org/2000/svg" width="9.121" height="16" viewBox="0 0 9.121 16">
     <path id = "arrow-left" d = "M7.208,8.792.328,1.913A1.12,1.12,0,1,1,1.913.328L8,6.416,14.087.328a1.12,1.12,0,0,1,1.585,1.585l-6.88,6.88a1.12,1.12,0,0,1-1.584,0Z" transform = "translate(9.121) rotate(90)" fill = "#fff" />
 </svg>`
