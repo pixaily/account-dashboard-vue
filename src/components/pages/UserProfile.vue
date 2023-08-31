@@ -79,7 +79,7 @@ export default {
       user: {},
       filteredTeams: [],
       showMessage: false,
-      currentlyHoveredId: null,
+      currentlyHoveredId: -1,
       prevSearchVal: '',
       iconNoResults: svgNoResults
     }
@@ -146,7 +146,7 @@ export default {
           this.showMessage = true;
         }
       } else {
-        this.currentlyHoveredId = null;
+        this.currentlyHoveredId = -1;
       }
     },
     checkMatches(search, string) {
@@ -183,6 +183,7 @@ export default {
     },
     arrowDownHandler() {
       const lastId = this.filteredTeams.length - 1;
+
       if(lastId !== -1) {
         if(this.currentlyHoveredId === lastId) {
           this.currentlyHoveredId = 0

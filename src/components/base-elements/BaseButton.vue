@@ -22,7 +22,7 @@ export default {
     },  
     'type': {
       type: String,
-      required: true
+      required: false
     },
     'label':{
       type: String,

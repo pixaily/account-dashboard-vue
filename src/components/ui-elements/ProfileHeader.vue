@@ -3,7 +3,7 @@
     <div class="header__left">
       <!-- Back button -->
       <base-button :mode="'router'" :to="'/'" :label="'Back'" :labelClasses="'notext'">
-        <base-icon class="'icon--arrow-left'" v-html="iconLeftArrow"></base-icon>
+        <base-icon class="icon--arrow-left" v-html="iconLeftArrow"></base-icon>
       </base-button>
       <base-button :mode="'router'" :to="'/'" :label="'Account Dashboard'" :class="'logo'" :labelClasses="'logo__text hidden-sm'">
         <span class="logo__icon" v-html="iconLogo"></span>
@@ -19,8 +19,8 @@
       <!-- Notifications button -->
       <base-button 
         :class="['notification']" 
-        :label="notificationsCount" 
-        :labelClasses="['notification__count']" 
+        :label="notificationsCountStr" 
+        :labelClasses="'notification__count'" 
         :mode="'button'">
         <base-icon :classes="['icon--notification']" v-html="iconNotification"></base-icon>
       </base-button>
@@ -48,6 +48,11 @@ export default {
       iconNotification: svgNotification,
       iconLogo: svgLogo
     }
+  },
+  computed: { 
+    notificationsCountStr() {
+      return this.notificationsCount.toString() ;
+    } 
   }
 }
 </script>
