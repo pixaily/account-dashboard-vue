@@ -54,6 +54,6 @@ export default {
 }
 </script>
 
-<style>
-  
+<style lang="scss">
+@import './../../assets/styles/base/_buttons.scss';
 </style>

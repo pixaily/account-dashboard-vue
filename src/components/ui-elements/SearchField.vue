@@ -46,5 +46,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import './../../assets/styles/components/_search.scss';
+@import './../../assets/styles/ui/_search.scss';
 </style>

@@ -1,57 +1,57 @@
 <template>
-  <div v-if="isLoading">Loading</div>
-    <div v-else>
-      <profile-header :username="username" :notificationsCount="user.notificationsCount"></profile-header>
-      <main class="main container">
-        <section class="profile">
-          <div class="profile__details">
-            <figure class="profile__avatar">
-              <img :src="avatarSrc" :alt="username" class="image">
-            </figure>
-            <p class="profile__level">Level {{user.level}}</p>
-          </div>
-          <p class="profile__username hidden-sm">{{username}}</p>
-        </section>
-        <profile-tabs />
-        <base-section :title="'Search Teams'">
-          <search-field @search="search" 
-          @arrowUp="arrowUpHandler"
-          @arrowDown="arrowDownHandler"></search-field>
-          <teams-list 
-          v-if="filteredTeams.length > 0 && !teamsLoading">
-            <team-item 
-            v-for="(team, index) in filteredTeams"
-            :key="team.id"
-            :id="team.id"
-            :name="team.highlightName || team.name"
-            :leagues="team.highlightLeagues.length > 0 ? team.highlightLeagues : team.leagues"
-            :stadium="team.highlightStadium || team.stadium"
-            :showButton="true"
-            :isFollowing="team.is_following"
-            :class="{ 'hover': currentlyHoveredId === index }"
-            @mouseenter="mouseEnterHandler(event, index)"
-            ></team-item>
-          </teams-list>
-          <p v-else-if="showMessage" class="search__no-results">
-            <base-icon class="icon--no-results" v-html="iconNoResults"></base-icon>
-            <span>No Matches Found</span>
-          </p>
-        </base-section>
-        <div class="divider"></div>
-        <base-section :title="'My Teams'">
-          <div v-if="user.myTeams.length === 0" class="myteams-empty">
-            <p>You aren't following any teams yet.</p>
-          </div>
-          <teams-list v-else>
-            <team-item 
-            v-for="team in user.myTeams"
-            :key="team.id"
-            :id="team.id"
-            :name="team.name"
-            ></team-item>
-          </teams-list>
-        </base-section>
-      </main>
+  <div v-if="isLoading" class="loading-screen">Loading <span>...</span></div>
+  <div v-else>
+    <profile-header :username="username" :notificationsCount="user.notificationsCount"></profile-header>
+    <main class="main container">
+      <section class="profile">
+        <div class="profile__details">
+          <figure class="profile__avatar">
+            <img :src="avatarSrc" :alt="username" class="image">
+          </figure>
+          <p class="profile__level">Level {{user.level}}</p>
+        </div>
+        <p class="profile__username hidden-sm">{{username}}</p>
+      </section>
+      <profile-tabs />
+      <base-section :title="'Search Teams'">
+        <search-field @search="search" 
+        @arrowUp="arrowUpHandler"
+        @arrowDown="arrowDownHandler"></search-field>
+        <teams-list 
+        v-if="filteredTeams.length > 0 && !teamsLoading">
+          <team-item 
+          v-for="(team, index) in filteredTeams"
+          :key="team.id"
+          :id="team.id"
+          :name="team.highlightName || team.name"
+          :leagues="team.highlightLeagues.length > 0 ? team.highlightLeagues : team.leagues"
+          :stadium="team.highlightStadium || team.stadium"
+          :showButton="true"
+          :isFollowing="team.is_following"
+          :class="{ 'hover': currentlyHoveredId === index }"
+          @mouseenter="mouseEnterHandler(event, index)"
+          ></team-item>
+        </teams-list>
+        <p v-else-if="showMessage" class="search__no-results">
+          <base-icon class="icon--no-results" v-html="iconNoResults"></base-icon>
+          <span>No Matches Found</span>
+        </p>
+      </base-section>
+      <div class="divider"></div>
+      <base-section :title="'My Teams'">
+        <div v-if="user.myTeams.length === 0" class="myteams-empty">
+          <p>You aren't following any teams yet.</p>
+        </div>
+        <teams-list v-else>
+          <team-item 
+          v-for="team in user.myTeams"
+          :key="team.id"
+          :id="team.id"
+          :name="team.name"
+          ></team-item>
+        </teams-list>
+      </base-section>
+    </main>
   </div>
 </template>
 

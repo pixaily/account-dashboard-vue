@@ -8,9 +8,6 @@
   display: flex;
   align-items: center;
   padding: 5px 10px;
-  &:last-child {
-    padding-bottom: 0;
-  }
   &.hover {
     background-color: $color-base-background;
     .team__badge { background-color: $color-base; }
