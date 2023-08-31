@@ -142,10 +142,12 @@ export default {
       return [... new Set(str.match(rex))]
     },
     highlightMaches(matches, str) {
+      let temp = '';
+
       matches.forEach(match => {
-        str = str.replaceAll(match, `<mark>${match}</mark>`)
+        temp = str.replaceAll(match, `<mark>${match}</mark>`)
       });
-      return str;
+      return temp;
     }
   },
   mounted() {
