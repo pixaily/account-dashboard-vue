@@ -1,8 +1,12 @@
 <template>
-  <section>
-    <h2>{{title}}</h2>
-    <slot>
-    </slot>
+  <section class="base-section">
+    <div class="base-section__heading">
+      <h3>{{title}}</h3>
+    </div>
+    <div class="base-section__content">
+      <slot>
+      </slot>
+    </div>
   </section>
 </template>
 
@@ -17,5 +21,6 @@ export default {
 }
 </script>
 
-<style scoped>
-</style> 
+<style lang="scss">
+@import './../../assets/styles/components/_base-section.scss';
+</style>

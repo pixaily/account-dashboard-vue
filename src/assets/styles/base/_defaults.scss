@@ -6,6 +6,8 @@ html {
 	font-family: $font-family-base;
 	font-size: $font-size-base;
 	line-height: 1;
+	color: $color-font-base;
+	background-color: $color-base-background;
 }
 
 button {
@@ -35,4 +37,9 @@ img {
 		max-width: 600px;
 		margin: 0 auto;
 	}
+}
+
+.divider {
+	background-color: $color-base-divider;
+	height: 8px;
 }
