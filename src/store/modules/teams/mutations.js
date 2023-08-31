@@ -1,5 +1,9 @@
 export default {
   updateTeams(state, payload) {
-    state.teams = [state.teams, ...payload];
+    if (state.teams.length > 0) {
+      state.teams = [state.teams, ...payload];
+    } else {
+      state.teams = [...payload];
+    }
   }
 }
