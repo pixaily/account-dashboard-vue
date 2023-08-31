@@ -1,5 +1,5 @@
 <template>
-  <button v-if="mode === 'button'" @click="clicked">
+  <button v-if="mode === 'button'" :type="type ? type : 'button'" @click="clicked">
     <span :class="[labelClasses]" v-if="label">{{ label }}</span>
     <slot></slot>
   </button>  
@@ -19,7 +19,11 @@ export default {
     'mode': {
       type: String,
       required: true
-    }, 
+    },  
+    'type': {
+      type: String,
+      required: true
+    },
     'label':{
       type: String,
       required: false

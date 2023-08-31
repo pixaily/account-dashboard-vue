@@ -1,17 +1,33 @@
 <template>
-  <div class="field-wrapper">
-    <i class="">search icon</i>
-    <input type="search" placeholder="Search for a team" @input="search" @keydown.up="handleUpKey" @keydown.down="handleDownKey">
-    <base-button :mode="'button'" :label="'clear'" :classes="'icon icon--close'"></base-button>
+  <div class="search">
+    <base-icon class="icon--search" v-html="iconSearch"></base-icon>
+    <input type="search" placeholder="Search for a team" @input="search" ref="search" @keydown.up="handleUpKey" @keydown.down="handleDownKey">
+    <base-button :mode="'button'" :label="'clear'" class="icon icon--close" @click="clearSearch">
+      <base-icon class="icon--clear" v-html="iconClear"></base-icon>
+    </base-button>
   </div>
 </template>
 
 <script>
+import { svgSearch, svgClose } from './../../assets/icons/SvgStore.js'
+
 export default {
   emits: ['search', 'arrowUp', 'arrowDown'],
+  data() {
+    return {
+      iconSearch: svgSearch,
+      iconClear: svgClose,
+      searchVal: ''
+    }
+  },
   methods: {
     search(event) {
-      this.$emit('search', event.target.value)
+      if(event) {
+        this.searchVal = event.target.value;
+      } else {
+        this.searchVal = '';
+      }
+      this.$emit('search', this.searchVal)
     },
     handleUpKey(e) {
       e.preventDefault();
@@ -20,6 +36,10 @@ export default {
     handleDownKey(e) {
       e.preventDefault();
       this.$emit('arrowDown')
+    },
+    clearSearch() {
+      this.$refs.search.value = '';
+      this.search();
     }
   }
 }
