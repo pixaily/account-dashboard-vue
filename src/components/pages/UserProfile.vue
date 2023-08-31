@@ -10,10 +10,12 @@
     </section>
     <profile-tabs></profile-tabs>
     <base-section :title="'Search Teams'">
-      <search-field @search="search"></search-field>
+      <search-field @search="search" 
+      @arrowUp="arrowUpHandler"
+      @arrowDown="arrowDownHandler"></search-field>
       <teams-list v-if="filteredTeams.length > 0 && !teamsLoading">
         <team-item 
-        v-for="team in filteredTeams"
+        v-for="(team, index) in filteredTeams"
         :key="team.id"
         :id="team.id"
         :name="team.highlightName || team.name"
@@ -21,6 +23,8 @@
         :stadium="team.highlightStadium || team.stadium"
         :showButton="true"
         :isFollowing="team.is_following"
+        :class="{ 'hover': currentlyHoveredId === index }"
+        @mouseenter="mouseEnterHandler(event, index)"
         ></team-item>
       </teams-list>
       <p v-else-if="showMessage">No Matches Found</p>
@@ -62,7 +66,9 @@ export default {
       isLoading: true,
       user: {},
       filteredTeams: [],
-      showMessage: false
+      showMessage: false,
+      currentlyHoveredId: null,
+      prevSearchVal: ''
     }
   },
   computed: {
@@ -95,7 +101,7 @@ export default {
       
       val = val.toLowerCase();
 
-      if(val.length > 0) {
+      if(val.length > 0 && val !== this.prevSearchVal) {
         if(this.teams.length === 0) {
           this.teamsLoading = true;
         } else {
@@ -126,6 +132,8 @@ export default {
         if(this.filteredTeams.length === 0) {
           this.showMessage = true;
         }
+      } else {
+        this.currentlyHoveredId = null;
       }
     },
     checkMatches(search, string) {
@@ -148,6 +156,30 @@ export default {
         temp = str.replaceAll(match, `<mark>${match}</mark>`)
       });
       return temp;
+    },
+    arrowUpHandler() {
+      const lastId = this.filteredTeams.length - 1;
+      
+      if(lastId !== -1) {
+        if(!this.currentlyHoveredId || this.currentlyHoveredId === 0) {
+          this.currentlyHoveredId = lastId
+        } else {
+          this.currentlyHoveredId -= 1;
+        }
+      }
+    },
+    arrowDownHandler() {
+      const lastId = this.filteredTeams.length - 1;
+      if(lastId !== -1) {
+        if(this.currentlyHoveredId === lastId) {
+          this.currentlyHoveredId = 0
+        } else {
+          this.currentlyHoveredId += 1;
+        }
+      }
+    },
+    mouseEnterHandler(_, index) {
+      this.currentlyHoveredId = index;
     }
   },
   mounted() {

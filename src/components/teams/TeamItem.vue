@@ -1,5 +1,5 @@
 <template>
-  <div class="team">
+  <li class="team">
     <!-- Badge -->
     <div class="team__badge">
       <img src="" alt="">
@@ -16,7 +16,7 @@
     <div class="team__action" v-if="showButton">
       <base-button :mode="'button'" :label="buttonLabel" :classes="'button button--round button--follow'" @buttonClicked="followClick"></base-button>
     </div>
-  </div>
+  </li>
 </template>
 
 <script>
