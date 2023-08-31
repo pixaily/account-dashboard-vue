@@ -3,13 +3,12 @@
   <div v-else>
     <profile-header :username="username" :notificationsCount="user.notificationsCount"></profile-header>
     <section>
-      <!-- Avatar -->
+      <figure class="user-avatar">
+        <img :src="avatarSrc" :alt="username" class="user-avatar__image">
+      </figure>
+      <p class="user-level">Level {{user.level}}</p>
     </section>
-    <section>
-      <!-- Tabs -->
-      <button>My Teams</button>
-      <button>About</button>
-    </section>
+    <profile-tabs></profile-tabs>
     <base-section :title="'Search Teams'">
       <search-field></search-field>
       <teams-list>
@@ -17,12 +16,10 @@
       </teams-list>
     </base-section>
     <base-section :title="'My Teams'">
-      <!-- if my teams emtpy  -->
-      <div>
+      <div v-if="user.myTeams.length === 0">
         <p>You aren't following any teams yet.</p>
       </div>
-      <!-- else  -->
-      <teams-list>
+      <teams-list v-else>
         <team-item></team-item>
       </teams-list>
     </base-section>
@@ -31,13 +28,20 @@
 
 <script>
 import ProfileHeader from './../ui-elements/ProfileHeader.vue'
+import ProfileTabs from './../ui-elements/ProfileTabs.vue'
 import SearchField from './../ui-elements/SearchField.vue'
 
 import TeamsList from './../teams/TeamsList.vue'
 import TeamItem from '../teams/TeamItem.vue'
 
 export default {
-  components: {ProfileHeader, SearchField, TeamsList, TeamItem},
+  components: {
+    ProfileHeader, 
+    SearchField, 
+    TeamsList, 
+    TeamItem,
+    ProfileTabs
+  },
   data() {
     return {
       isLoading: true,
@@ -46,7 +50,14 @@ export default {
   },
   computed: {
     username() {
-      return this.user.firstName + '' + this.user.lastName
+      return `${this.user.firstName}${this.user.lastName}`
+    },
+    avatarSrc() {
+      if(this.user.avatar != '') {
+        return require(`@/assets/images/${this.user.avatar}`);
+      } else {
+        return require(`@/assets/images/profile.png`)
+      }
     }
   },
   watch: {
