@@ -6,10 +6,11 @@
     </div>
     <div class="team__details">
       <div class="team__leagues">
+        <span v-for="(league, index) in leagues" :key="index" v-html="league"></span>
       </div>
       <div class="team__info">        
-        <div class="team__name">{{name}}</div>
-        <div class="team__stadium">{{stadium}}</div>
+        <div class="team__name" v-html="name"></div>
+        <div class="team__stadium" v-html="stadium"></div>
       </div>
     </div>
     <div class="team__action">

@@ -16,9 +16,9 @@
         v-for="team in filteredTeams"
         :key="team.id"
         :id="team.id"
-        :name="team.name"
-        :leagues="team.leagues"
-        :stadium="team.stadium"
+        :name="team.highlightName || team.name"
+        :leagues="team.highlightLeagues.length > 0 ? team.highlightLeagues : team.leagues"
+        :stadium="team.highlightStadium || team.stadium"
         :isFollowing="team.is_following"
         ></team-item>
       </teams-list>
@@ -91,22 +91,38 @@ export default {
     search(val) {
       this.filteredTeams = [];
       
+      val = val.toLowerCase();
+
       if(val.length > 0) {
         if(this.teams.length === 0) {
           this.teamsLoading = true;
         } else {
           this.teamsLoading = false;
           this.teams.forEach(team => {
+            let isAMatch = false;
+
             if(this.filterBy(val, team.name)) {
+              team.highlightName = this.highlightMach(val, team.name);
+              isAMatch = true;
+            }
+
+            if(this.filterBy(val, team.stadium)) {
+              team.highlightStadium = this.highlightMach(val, team.stadium);
+              isAMatch = true;
+            }
+
+            if(isAMatch) {
               this.filteredTeams.push(team);
             }
           })
         }      
       }
-      
     },
-    filterBy(str, property) {
-      return property.toLowerCase().replace(' ', '').includes(str)
+    filterBy(part, str) {
+      return str.toLowerCase().replace(' ', '').includes(part)
+    },
+    highlightMach(part, str) {
+      return str.split(part).join('<mark>'+part+'</mark>');
     }
   },
   mounted() {
@@ -115,5 +131,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+mark {
+  color: blue;
+}
 </style>
