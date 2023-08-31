@@ -19,6 +19,7 @@
         :name="team.highlightName || team.name"
         :leagues="team.highlightLeagues.length > 0 ? team.highlightLeagues : team.leagues"
         :stadium="team.highlightStadium || team.stadium"
+        :showButton="true"
         :isFollowing="team.is_following"
         ></team-item>
       </teams-list>
@@ -33,9 +34,6 @@
         :key="team.id"
         :id="team.id"
         :name="team.name"
-        :leagues="team.leagues"
-        :stadium="team.stadium"
-        :isFollowing="team.is_following"
         ></team-item>
       </teams-list>
     </base-section>
