@@ -19,6 +19,7 @@
 
 <script>
 export default {
+   props: [ 'team' ]
 }
 </script>
 

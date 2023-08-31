@@ -14,13 +14,13 @@
       </div>
       <!-- Mobile Username -->
       <div class="header__username">
-        <p>RichyRich</p>
+        <p>{{username}}</p>
       </div>
     </div>
     <div class="header__right">
       <!-- Notifications button -->
       <base-button :mode="'button'" >
-        <span>2</span>
+        <span>{{notificationsCount}}</span>
       </base-button>
     </div>
   </header>
@@ -28,6 +28,16 @@
 
 <script>
 export default {
+  props: {
+    username: {
+      type: String,
+      required: true
+    },
+    notificationsCount: {
+      type: Number,
+      required: true
+    }
+  }
 }
 </script>
 
