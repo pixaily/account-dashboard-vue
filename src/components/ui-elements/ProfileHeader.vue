@@ -4,7 +4,7 @@
       <!-- Back button -->
       <base-button :mode="'router'" :to="'/'" :label="'Back'" :classes="'something icon arrow-left'" :icon="'arrow-left'"></base-button>
       <figure>
-        <img src="../../assets/images/logo-small.svg" alt="">
+        <img src="../../assets/images/logo.png" alt="">
       </figure>
     </div>
     <div class="header__center">
