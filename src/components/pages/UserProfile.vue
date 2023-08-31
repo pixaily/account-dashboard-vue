@@ -23,6 +23,7 @@
         :isFollowing="team.is_following"
         ></team-item>
       </teams-list>
+      <p v-else-if="showMessage">No Matches Found</p>
     </base-section>
     <base-section :title="'My Teams'">
       <div v-if="user.myTeams.length === 0">
@@ -60,7 +61,8 @@ export default {
     return {
       isLoading: true,
       user: {},
-      filteredTeams: []
+      filteredTeams: [],
+      showMessage: false
     }
   },
   computed: {
@@ -88,6 +90,8 @@ export default {
   methods: {
     search(val) {
       this.filteredTeams = [];
+
+      this.showMessage = false;
       
       val = val.toLowerCase();
 
@@ -118,7 +122,10 @@ export default {
               this.filteredTeams.push(team);
             }
           })
-        }      
+        }
+        if(this.filteredTeams.length === 0) {
+          this.showMessage = true;
+        }
       }
     },
     checkMatches(search, string) {
