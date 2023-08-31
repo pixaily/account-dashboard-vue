@@ -101,16 +101,61 @@ export default {
           this.teams.forEach(team => {
             let isAMatch = false;
 
-            if(this.filterBy(val, team.name)) {
-              team.highlightName = this.highlightMach(val, team.name);
-              isAMatch = true;
+            const highlightName = this.checkMatches(val, team.name);
+            team.highlightName = '';
+            
+            if(highlightName.length > 0) {
+              team.highlightName = highlightName;
+              if(!isAMatch) {
+                isAMatch = true;
+              } 
             }
 
-            if(this.filterBy(val, team.stadium)) {
-              team.highlightStadium = this.highlightMach(val, team.stadium);
-              isAMatch = true;
+            const highlightStadium = this.checkMatches(val, team.stadium);
+            team.highlightStadium = '';
+            
+            if(highlightStadium.length > 0) {
+              team.highlightStadium = highlightStadium;
+              if(!isAMatch) {
+                isAMatch = true;
+              } 
             }
 
+            const highlightLeagues = [];
+            team.highlightLeagues = [];
+
+            team.leagues.forEach(league => {
+              const highlightLeague = this.checkMatches(val, league);
+              if(highlightLeague.length > 0) {
+                highlightLeagues.push(highlightLeague);
+              }
+            })
+
+            if(highlightLeagues.length > 0) {
+              team.highlightLeagues = [...highlightLeagues]
+              if(!isAMatch) {
+                isAMatch = true;
+              }
+            }
+
+            // const nameMatches = this.filterBy(val, team.name); 
+            // if(nameMatches && nameMatches.length > 0) {
+              // team.highlightName = this.highlightMaches(nameMatches, team.name);
+              // isAMatch = true;
+            // }
+            
+            // if(this.filterBy(val, team.stadium)) {
+              // team.highlightStadium = this.highlightMach(val, team.stadium);
+              // isAMatch = true;
+            // }
+            // team.leagues.forEach(league => {
+              // team.highlightLeagues = [];
+              // if(this.filterBy(val, league)) {
+                // team.highlightLeagues.push(this.highlightMach(val, league))
+                // isAMatch = true;
+              // }
+            // })
+            
             if(isAMatch) {
               this.filteredTeams.push(team);
             }
@@ -118,11 +163,31 @@ export default {
         }      
       }
     },
+    checkMatches(search, string) {
+      const nameMatches = this.filterBy(search, string); 
+      let highlightText = '';
+      if(nameMatches && nameMatches.length > 0) {
+        highlightText = this.highlightMaches(nameMatches, string);
+      }
+      return highlightText;
+    },
     filterBy(part, str) {
+      const rex = new RegExp(part, 'gmi');
+      
+      return [... new Set(str.match(rex))]
+    },
+    filterBy2(part, str) {
       return str.toLowerCase().replace(' ', '').includes(part)
     },
     highlightMach(part, str) {
       return str.split(part).join('<mark>'+part+'</mark>');
+    },
+    highlightMaches(matches, str) {
+      matches.forEach(match => {
+        // console.log(match);
+        str = str.replaceAll(match, `<mark>${match}</mark>`)
+      });
+      return str;
     }
   },
   mounted() {
