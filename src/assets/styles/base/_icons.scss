@@ -1,0 +1,12 @@
+.icon {
+  @extend %no-font;
+  display: block;
+}
+.icon--arrow-left {
+  width: 9px;
+  height: 16px;
+}
+.icon--notification {
+  width: 20px;
+  height: 20px;
+}
