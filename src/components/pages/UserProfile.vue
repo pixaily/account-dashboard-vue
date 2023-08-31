@@ -12,7 +12,7 @@
           </div>
           <p class="profile__username hidden-sm">{{username}}</p>
         </section>
-        <profile-tabs></profile-tabs>
+        <profile-tabs />
         <base-section :title="'Search Teams'">
           <search-field @search="search" 
           @arrowUp="arrowUpHandler"

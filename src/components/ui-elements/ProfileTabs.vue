@@ -1,6 +1,6 @@
 <template>
-  <section class="profile-tabs">
-    <base-button :mode="'router'" :label="'My Teams'" :to="'/user-profile'"></base-button>
+  <section class="container profile-tabs">
+    <base-button :mode="'router'" :class="'active'" :label="'My Teams'" :to="'/user-profile'"></base-button>
     <base-button :mode="'router'" :label="'About'" :to="'/user-profile'"></base-button>
   </section>
 </template>
@@ -9,5 +9,40 @@
 export default {}
 </script>
 
-<style>
+<style lang="scss">
+.profile-tabs {
+  display: flex;
+  justify-content: center;
+  background: $color-accent-dark;
+  font-size: 11px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  font-weight: $font-weight-medium;
+  padding: 12px 0;
+  a {
+    color: $color-base;
+    text-decoration: none;
+    padding: 0 5px;
+    position: relative;
+    & + a {
+      margin-left: 15px;
+    }
+    &::after {
+      content: '';
+      display: none;
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -12px;
+      height: 3px;
+      border-radius: 3px 3px 0 0;
+      background-color: $color-accent-light;
+    }
+    &:hover,
+    &.active {
+      &::after { display: block; }
+    }
+  }
+  
+}
 </style>
