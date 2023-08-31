@@ -2,8 +2,8 @@
   <div v-if="isLoading">Loading</div>
     <div v-else>
       <profile-header :username="username" :notificationsCount="user.notificationsCount"></profile-header>
-      <main class="main">
-        <section class="container profile">
+      <main class="main container">
+        <section class="profile">
           <div class="profile__details">
             <figure class="profile__avatar">
               <img :src="avatarSrc" :alt="username" class="image">
@@ -32,10 +32,14 @@
             @mouseenter="mouseEnterHandler(event, index)"
             ></team-item>
           </teams-list>
-          <p v-else-if="showMessage">No Matches Found</p>
+          <p v-else-if="showMessage" class="search__no-results">
+            <base-icon class="icon--no-results" v-html="iconNoResults"></base-icon>
+            <span>No Matches Found</span>
+          </p>
         </base-section>
+        <div class="divider"></div>
         <base-section :title="'My Teams'">
-          <div v-if="user.myTeams.length === 0">
+          <div v-if="user.myTeams.length === 0" class="myteams-empty">
             <p>You aren't following any teams yet.</p>
           </div>
           <teams-list v-else>
@@ -59,6 +63,8 @@ import SearchField from './../ui-elements/SearchField.vue'
 import TeamsList from './../teams/TeamsList.vue'
 import TeamItem from '../teams/TeamItem.vue'
 
+import { svgNoResults } from './../../assets/icons/SvgStore.js'
+
 export default {
   components: {
     ProfileHeader, 
@@ -74,7 +80,8 @@ export default {
       filteredTeams: [],
       showMessage: false,
       currentlyHoveredId: null,
-      prevSearchVal: ''
+      prevSearchVal: '',
+      iconNoResults: svgNoResults
     }
   },
   computed: {

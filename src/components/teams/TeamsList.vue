@@ -1,14 +1,20 @@
 <template>
  <ul class="teams-list">
-    <li class="teams-list__item">
-      <slot></slot>
-    </li>
+    <slot></slot>
   </ul>  
 </template>
 
 <script>
-export default {}
+export default {
+  props: {
+    classes: {
+      type: String,
+      required: false
+    }
+  }
+}
 </script>
 
-<style>
+<style lang="scss">
+@import './../../assets/styles/components/_teams-list.scss';
 </style>

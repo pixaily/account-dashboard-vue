@@ -1,13 +1,13 @@
 <template>
-  <button v-if="mode === 'button'" :class="[buttonClasses]" @click="clicked">
+  <button v-if="mode === 'button'" @click="clicked">
     <span :class="[labelClasses]" v-if="label">{{ label }}</span>
     <slot></slot>
   </button>  
-  <router-link v-else-if="mode === 'router'" :to="to" :class="[buttonClasses]" @click="clicked">
+  <router-link v-else-if="mode === 'router'" :to="to" @click="clicked">
     <span :class="[labelClasses]" v-if="label">{{ label }}</span>
     <slot></slot>
   </router-link>  
-  <a :href="href" v-else-if="mode === 'link'" :class="[buttonClasses]" @click="clicked">
+  <a :href="href" v-else-if="mode === 'link'" @click="clicked">
     <span :class="[labelClasses]" v-if="label">{{ label }}</span>
     <slot></slot>
   </a>
@@ -23,11 +23,7 @@ export default {
     'label':{
       type: String,
       required: false
-    }, 
-    'classes':{
-      type: String,
-      required: false
-    }, 
+    },
     'to':{
       type: String,
       required: false
@@ -44,14 +40,6 @@ export default {
   emit: ['buttonClicked'],
   data() {
     return {
-    }
-  },
-  computed: {
-    buttonClasses() {
-      if(this.classes && this.classes.length > 0) {
-        return this.classes.split(' ')
-      }
-      return []
     }
   },
   methods: {

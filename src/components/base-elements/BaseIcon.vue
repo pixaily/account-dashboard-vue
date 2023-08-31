@@ -1,11 +1,9 @@
 <template>
-  <i :class="['icon', ...classes]"></i>
+  <i :class="'icon'"></i>
 </template>
 
 <script>
-export default {
-  props: ['classes']
-}
+export default {}
 </script>
 
 <style>

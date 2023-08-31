@@ -3,7 +3,7 @@
     <div class="header__left">
       <!-- Back button -->
       <base-button :mode="'router'" :to="'/'" :label="'Back'" :labelClasses="'notext'">
-        <base-icon :classes="['icon--arrow-left']" v-html="iconLeftArrow"></base-icon>
+        <base-icon :class="['icon--arrow-left']" v-html="iconLeftArrow"></base-icon>
       </base-button>
       <base-button :mode="'router'" :to="'/'" :label="'Account Dashboard'" :class="'logo'" :labelClasses="'logo__text notext'">
         <figure>

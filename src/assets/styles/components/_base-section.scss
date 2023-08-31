@@ -14,18 +14,18 @@
   }
 }
 .base-section__content {
-  padding: 0 10px 10px;
+  padding-bottom: 10px;
 }
 
-.myteams {}
-.myteams__empty {
+.myteams-empty {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 90px;
-  border-radius: 8px;
   font-size: 12px;
   line-height: 1.3;
   color: $color-font-placeholder;
+  height: 90px;
+  border-radius: 8px;
   background-color: $color-base-background;
+  margin: 0 10px;
 }

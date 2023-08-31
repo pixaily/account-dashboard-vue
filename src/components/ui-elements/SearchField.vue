@@ -25,5 +25,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import './../../assets/styles/components/_search.scss';
 </style>
