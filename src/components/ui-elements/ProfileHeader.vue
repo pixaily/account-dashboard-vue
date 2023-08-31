@@ -22,7 +22,11 @@
     </div>
     <div class="header__right">
       <!-- Notifications button -->
-      <base-button :class="['notification']" :label="notificationsCount" :labelClasses="['notification__count']" :mode="'button'">
+      <base-button 
+        :class="['notification']" 
+        :label="notificationsCount" 
+        :labelClasses="['notification__count']" 
+        :mode="'button'">
         <base-icon :classes="['icon--notification']" v-html="iconNotification"></base-icon>
       </base-button>
     </div>

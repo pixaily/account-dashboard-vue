@@ -3,7 +3,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
   css: {
     loaderOptions: {
-      sass: {
+      scss: {
         additionalData: '@import "@/assets/styles/styles-base.scss";',
         implementation: require('sass')
       },

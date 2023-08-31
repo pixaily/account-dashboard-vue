@@ -1,14 +1,14 @@
 <template>
   <button v-if="mode === 'button'" :class="[buttonClasses]" @click="clicked">
-    <span :class="[labelClasses]">{{ label }}</span>
+    <span :class="[labelClasses]" v-if="label">{{ label }}</span>
     <slot></slot>
   </button>  
   <router-link v-else-if="mode === 'router'" :to="to" :class="[buttonClasses]" @click="clicked">
-    <span :class="[labelClasses]">{{ label }}</span>
+    <span :class="[labelClasses]" v-if="label">{{ label }}</span>
     <slot></slot>
   </router-link>  
   <a :href="href" v-else-if="mode === 'link'" :class="[buttonClasses]" @click="clicked">
-    <span :class="[labelClasses]">{{ label }}</span>
+    <span :class="[labelClasses]" v-if="label">{{ label }}</span>
     <slot></slot>
   </a>
 </template>
