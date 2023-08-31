@@ -5,14 +5,8 @@
       <base-button :mode="'router'" :to="'/'" :label="'Back'" :labelClasses="'notext'">
         <base-icon class="'icon--arrow-left'" v-html="iconLeftArrow"></base-icon>
       </base-button>
-      <base-button :mode="'router'" :to="'/'" :label="'Account Dashboard'" :class="'logo'" :labelClasses="'logo__text notext'">
-        <!-- <figure>
-          <img src="../../assets/images/logo.png" alt="">
-        </figure> -->
-        <span class="logo__small hidden-md" v-html="iconLogo"></span>
-        <p>VueJS</p>
-        <!-- <span class="logo__small hidden-md" v-html="logoSmall"></span> -->
-        <!-- <span class="logo__big hidden-sm" v-html="iconLogo"></span> -->
+      <base-button :mode="'router'" :to="'/'" :label="'Account Dashboard'" :class="'logo'" :labelClasses="'logo__text hidden-sm'">
+        <span class="logo__icon" v-html="iconLogo"></span>
       </base-button>
     </div>
     <div class="header__center">
@@ -58,5 +52,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
+@import './../../assets/styles/ui/header';
 </style>

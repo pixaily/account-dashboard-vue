@@ -16,24 +16,22 @@
   align-items: center;
 }
 
-.logo__text {
-  display: block;
+.logo {
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  text-decoration: none;
 }
-.logo__small {
+.logo__icon {
   width: 33px;
   height: 18px;
   margin-left: 10px;
-  @include devices(tablet-down) {
-    display: block;
-  }
 }
-.logo__big {
-  width: 165px;
-  height: 18px;
-  margin-left: 15px;
-  @include devices(tablet-up) {
-    display: block;
-  }
+.logo__text {
+  font-family: $font-family-base;
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-base;
 }
 
 .header-username {
