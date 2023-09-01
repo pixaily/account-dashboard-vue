@@ -1,6 +1,6 @@
 # Account Dashboard developed with Vue
 
-## What you’ll be doing
+## Initial Task
 
 ### Create a Vue 3 project 
 
@@ -15,17 +15,15 @@
 The input will search through a list of football teams. Each team object contains the
 following fields:
 
-- retrieve а list of teams
+- Retrieve а list of teams
 - Implement a search functionality with the requirements below
-- Requirements
-- The input will search through a list of football teams. Each team object contains the
-following fields:
-
-  * *id* - a unique ID
-  * *name* - the team’s name
-  * *stadium* - the team’s stadium
-  * *leagues* - a list of leagues in which the team participates
-  * *is_following* - a flag indicating whether the team is being followed
+  - The input will search through a list of football teams. 
+  - Each team object contains the following fields:
+    * *id* - a unique ID
+    * *name* - the team’s name
+    * *stadium* - the team’s stadium
+    * *leagues* - a list of leagues in which the team participates
+    * *is_following* - a flag indicating whether the team is being followed
   
 The user should be able to search by name, stadium, and leagues.
 
