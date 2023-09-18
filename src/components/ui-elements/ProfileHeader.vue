@@ -2,10 +2,10 @@
   <header class="header">
     <div class="header__left">
       <!-- Back button -->
-      <base-button :mode="'router'" :to="'/'" :label="'Back'" :labelClasses="'notext'">
+      <base-button :mode="'router'" :to="'#'" :label="'Back'" :labelClasses="'notext'">
         <base-icon class="icon--arrow-left" v-html="iconLeftArrow"></base-icon>
       </base-button>
-      <base-button :mode="'router'" :to="'/'" :label="'Account Dashboard'" :class="'logo'" :labelClasses="'logo__text hidden-sm'">
+      <base-button :mode="'router'" :to="'#'" :label="'Account Dashboard'" :class="'logo'" :labelClasses="'logo__text hidden-sm'">
         <span class="logo__icon" v-html="iconLogo"></span>
       </base-button>
     </div>
