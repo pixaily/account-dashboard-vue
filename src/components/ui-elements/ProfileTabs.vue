@@ -1,7 +1,7 @@
 <template>
   <section class="container profile-tabs">
-    <base-button :mode="'router'" :class="'active'" :label="'My Teams'" :to="'/user-profile'"></base-button>
-    <base-button :mode="'router'" :label="'About'" :to="'/user-profile'"></base-button>
+    <base-button :mode="'router'" :class="'active'" :label="'My Teams'" :to="{name: 'user-profile' }"></base-button>
+    <base-button :mode="'router'" :label="'About'" :to="{name: 'user-profile' }"></base-button>
   </section>
 </template>
 

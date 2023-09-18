@@ -12,7 +12,7 @@ const router = createRouter({
       name: 'home',
       // path: '/',
       path: ghpUrl, 
-      redirect: ghpUrl + 'user-profile'
+      redirect: { name: 'user-profile' }
     },
     {
       name: 'user-profile',
