@@ -1,5 +1,7 @@
 # Account Dashboard developed with Vue
 
+You can check it out [here](https://pixaily.github.io/account-dashboard-vue)
+
 ## Initial Task
 
 ### Create a Vue 3 project 
