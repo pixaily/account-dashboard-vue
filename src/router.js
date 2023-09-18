@@ -3,7 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import UserProfile from './components/pages/UserProfile.vue';
 
 // GitHub Pages URL
-const ghpUrl = '/account-dashboard-vue.git/'
+// const ghpUrl = '/account-dashboard-vue.git/'
 
 const router = createRouter({
   history: createWebHistory(),
